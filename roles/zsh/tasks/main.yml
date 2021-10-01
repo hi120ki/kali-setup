@@ -34,6 +34,7 @@
               ls
           fi
       }
+      alias mkdir='(){mkdir $1;cd $1}'
       alias g='git'
       alias gl='git pull'
       alias ga='git add --all'
