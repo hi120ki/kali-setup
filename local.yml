@@ -2,7 +2,8 @@
   become: yes
   roles:
     - apt
-    - keyboard
-    - tools
-    - pipx
-    - vscode
+    # - keyboard
+    # - tools
+    # - pipx
+    # - vscode
+    - zsh

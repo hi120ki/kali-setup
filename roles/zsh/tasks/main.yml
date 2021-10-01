@@ -1,0 +1,29 @@
+- name: edit ~/.zshrc
+  become: no
+  blockinfile:
+    dest: ~/.zshrc
+    content: |
+      alias l='ls'
+      alias la='ls -ahl'
+      alias c='bat --theme="OneHalfDark"'
+      alias gr='rg'
+      alias grl='rg -l'
+      alias f='fd'
+      alias ]='cd ../'
+      alias de='cd ~/Desktop'
+      alias dl='cd ~/Downloads'
+      alias do='cd ~/Documents'
+      alias rmr='rm -rf'
+      alias cl='clear'
+      alias zshrc='code ~/.zshrc'
+      chpwd() {
+          if [[ $(pwd) != $HOME ]]; then;
+              ls
+          fi
+      }
+      alias g='git'
+      alias gl='git pull'
+      alias ga='git add --all'
+      alias gc='git commit -m'
+      alias gp='git push origin (git_current_branch)'
+      alias commit='git add . ; git commit -m "commit" ; git push origin main'
