@@ -2,6 +2,7 @@
   become: yes
   roles:
     - ssh
+    - git
     - apt
     - keyboard
     - tools
