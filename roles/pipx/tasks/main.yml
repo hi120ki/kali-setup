@@ -4,8 +4,8 @@
   register: check_pipx
   become: no
 - block:
-  - name: "apt-get install -y python3-venv"
-    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y python3-venv"
+  - name: "apt-get install -y python3-pip python3-venv"
+    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip python3-venv"
   - name: python3 -m pip install --user pipx
     shell: "python3 -m pip install --user pipx"
     become: no
