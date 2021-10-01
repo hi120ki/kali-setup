@@ -1,0 +1,38 @@
+- name: check tool_dir
+  stat:
+    path: ~/tool
+  register: tool_dir
+  become: no
+- block:
+  - name: mkdir ~/tool
+    file:
+      path: ~/tool
+      state: directory
+    become: no
+  - name: clone
+    shell: "git -C ~/tool clone --depth 1 {{ item }}"
+    become: no
+    with_items:
+      - https://github.com/Tib3rius/AutoRecon.git
+      - https://github.com/superkojiman/onetwopunch.git
+      - https://github.com/areyou1or0/OSCP.git
+      - https://github.com/SpiderLabs/Responder.git
+      - https://github.com/SecureAuthCorp/impacket.git
+      - https://github.com/erforschr/bruteforce-http-auth.git
+      - https://github.com/pentestmonkey/smtp-user-enum.git
+      - https://github.com/P0cL4bs/kadimus.git
+      - https://github.com/codingo/NoSQLMap.git
+      - https://github.com/besimorhino/powercat.git
+      - https://github.com/carlospolop/PEASS-ng.git
+      - https://github.com/diego-treitos/linux-smart-enumeration.git
+      - https://github.com/rebootuser/LinEnum.git
+      - https://github.com/DominicBreuker/pspy.git
+      - https://github.com/EmpireProject/Empire.git
+      - https://github.com/PowerShellMafia/PowerSploit.git
+      - https://github.com/gladiatx0r/Powerless.git
+      - https://github.com/411Hall/JAWS.git
+      - https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git
+      - https://github.com/rasta-mouse/Sherlock.git
+      - https://github.com/AlessandroZ/BeRoot.git
+  when:
+    - not tool_dir.stat.exists

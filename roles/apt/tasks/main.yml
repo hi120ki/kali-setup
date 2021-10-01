@@ -1,0 +1,7 @@
+- name: "apt-get update"
+  shell: "apt-get update"
+  ignore_errors: yes
+- name: "install software-properties-common"
+  shell: "apt-get install -y software-properties-common apt-transport-https"
+- name: "install tools"
+  shell: "apt-get install -y gobuster"

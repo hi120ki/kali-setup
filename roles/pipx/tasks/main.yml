@@ -1,0 +1,21 @@
+- name: check pipx installed
+  shell: "which pipx"
+  register: check_pipx
+  failed_when: check_pipx.rc not in [0,1]
+- block:
+  - name: "apt-get install -y python3-venv"
+    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y python3-venv"
+  - name: python3 -m pip install --user pipx
+    shell: "python3 -m pip install --user pipx"
+    become: no
+  - name: python3 -m pipx ensurepath
+    shell: "python3 -m pipx ensurepath"
+    become: no
+  - name: pipx install
+    shell: "~/.local/bin/pipx install {{ item }}"
+    become: no
+    with_items:
+      - git+https://github.com/Tib3rius/AutoRecon.git
+  - name: install AutoRecon dependency
+    shell: "apt install -y seclists curl enum4linux feroxbuster nbtscan nikto nmap onesixtyone oscanner smbclient smbmap smtp-user-enum snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf"
+  when: check_pipx.rc == 1

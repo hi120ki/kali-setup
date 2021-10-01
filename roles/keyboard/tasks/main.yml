@@ -1,0 +1,2 @@
+- name: "localectl set-keymap jp106"
+  shell: "localectl set-keymap jp106"
