@@ -6,15 +6,15 @@
   blockinfile:
     dest: ~/.zshrc
     content: |
-      alias ls='exa -lg --octal-permissions --time-style long-iso --icons'
-      alias l='exa -lg --octal-permissions --time-style long-iso --icons'
-      alias la='exa -lag --octal-permissions --time-style long-iso --icons'
+      alias ls='exa -lg --octal-permissions --time-style=long-iso --icons'
+      alias l='exa -lg --octal-permissions --time-style=long-iso --icons'
+      alias la='exa -lag --octal-permissions --time-style=long-iso --icons'
       lt() {
           if [ "$1" != "" ]
           then
-              exa -lT --icons --time-style=long-iso -L=$1
+              exa -lT --octal-permissions --time-style=long-iso --icons -L=$1
           else
-              exa -lT --icons --time-style=long-iso -L=2
+              exa -lT --octal-permissions --time-style=long-iso --icons -L=2
           fi
       }
       alias c='batcat --theme="OneHalfDark"'
