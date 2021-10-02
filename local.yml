@@ -9,3 +9,4 @@
     - pipx
     - vscode
     - zsh
+    - anyenv
