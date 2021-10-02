@@ -21,7 +21,7 @@
       alias gr='rg'
       alias grl='rg -l'
       alias f='fdfind'
-      alias ]='cd ../'
+      alias ]='cd ../ ; ls'
       alias de='cd ~/Desktop'
       alias dl='cd ~/Downloads'
       alias do='cd ~/Documents'
