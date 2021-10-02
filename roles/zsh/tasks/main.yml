@@ -5,6 +5,7 @@
   become: no
   blockinfile:
     dest: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK zsh"
     content: |
       alias ls='exa -lg --octal-permissions --time-style=long-iso --icons'
       alias l='exa -lg --octal-permissions --time-style=long-iso --icons'

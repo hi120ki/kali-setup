@@ -16,6 +16,7 @@
     become: no
     blockinfile:
       dest: ~/.zshrc
+      marker: "# {mark} ANSIBLE MANAGED BLOCK anyenv"
       content: |
         export PATH="$HOME/.anyenv/bin:$PATH"
         eval "$(anyenv init -)"
@@ -23,6 +24,7 @@
     become: no
     blockinfile:
       dest: ~/.bashrc
+      marker: "# {mark} ANSIBLE MANAGED BLOCK anyenv"
       content: |
         export PATH="$HOME/.anyenv/bin:$PATH"
         eval "$(anyenv init -)"
