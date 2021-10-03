@@ -27,6 +27,7 @@
       alias dl='cd ~/Downloads'
       alias do='cd ~/Documents'
       alias tool='cd ~/tool'
+      alias oscp='cd ~/oscp'
       alias rmr='rm -rf'
       alias cl='clear'
       alias zshrc='code ~/.zshrc'
