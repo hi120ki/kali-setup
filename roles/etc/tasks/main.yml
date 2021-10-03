@@ -1,0 +1,9 @@
+- name: rockyou.txt
+  stat:
+    path: /usr/share/wordlists/rockyou.txt
+  register: rockyou_file
+- block:
+  - name: 7z x rockyou.txt
+    shell: "7z x /usr/share/wordlists/rockyou.txt.gz -o/usr/share/wordlists/"
+  when:
+    - not rockyou_file.stat.exists

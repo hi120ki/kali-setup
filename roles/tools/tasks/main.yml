@@ -37,5 +37,6 @@
       - https://github.com/mzet-/linux-exploit-suggester.git
       - https://github.com/bitsadmin/wesng.git
       - https://github.com/noraj/OSCP-Exam-Report-Template-Markdown.git
+      - https://github.com/rapid7/ssh-badkeys.git
   when:
     - not tool_dir.stat.exists

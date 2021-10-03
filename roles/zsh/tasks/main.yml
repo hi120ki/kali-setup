@@ -22,7 +22,7 @@
       alias gr='rg'
       alias grl='rg -l'
       alias f='fdfind'
-      alias ]='cd ../ ; ls'
+      alias ]='cd ../'
       alias de='cd ~/Desktop'
       alias dl='cd ~/Downloads'
       alias do='cd ~/Documents'
@@ -31,9 +31,7 @@
       alias cl='clear'
       alias zshrc='code ~/.zshrc'
       chpwd() {
-          if [[ $(pwd) != $HOME ]]; then;
-              ls
-          fi
+          ls
       }
       alias mkdir='(){mkdir $1;cd $1}'
       alias g='git'
