@@ -44,3 +44,4 @@
       alias venv='source venv/bin/activate'
       alias venvinit='rm -rf venv ; python -m venv venv'
       alias venvsetup='venvinit ; venv ; pip install -U pip ; pipreq'
+      unset zle_bracketed_paste
