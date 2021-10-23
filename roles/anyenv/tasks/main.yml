@@ -8,7 +8,7 @@
     shell: "apt-get update"
     ignore_errors: yes
   - name: "apt-get install pyenv lib"
-    shell: "apt-get install -y libssl-dev libbz2-dev libreadline-dev libsqlite3-dev"
+    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y libssl-dev libbz2-dev libreadline-dev libsqlite3-dev"
   - name: "git clone anyenv"
     shell: "git clone https://github.com/anyenv/anyenv ~/.anyenv"
     become: no

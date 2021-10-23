@@ -15,10 +15,9 @@
   - name: rm -f packages.microsoft.gpg
     shell: "rm -f packages.microsoft.gpg"
     become: no
-  - name: sudo apt update
-    shell: "sudo apt update"
-    become: no
-  - name: sudo apt install -y code
-    shell: "sudo apt install -y code"
-    become: no
+  - name: "apt-get update"
+    shell: "apt-get update"
+    ignore_errors: yes
+  - name: apt-get install -y code
+    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y code"
   when: check_code.rc == 1

@@ -18,6 +18,6 @@
     with_items:
       - git+https://github.com/Tib3rius/AutoRecon.git
   - name: install AutoRecon dependency
-    shell: "apt install -y seclists curl enum4linux feroxbuster nbtscan nikto nmap onesixtyone oscanner smbclient smbmap smtp-user-enum snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf redis-tools"
+    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y seclists curl enum4linux feroxbuster nbtscan nikto nmap onesixtyone oscanner smbclient smbmap smtp-user-enum snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf redis-tools"
   when:
     - not check_pipx.stat.exists
