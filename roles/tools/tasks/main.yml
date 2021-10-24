@@ -13,7 +13,6 @@
     shell: "git -C ~/tool clone --depth 1 {{ item }}"
     become: no
     with_items:
-      - https://github.com/Tib3rius/AutoRecon.git
       - https://github.com/superkojiman/onetwopunch.git
       - https://github.com/areyou1or0/OSCP.git
       - https://github.com/SpiderLabs/Responder.git
@@ -34,6 +33,7 @@
       - https://github.com/rasta-mouse/Sherlock.git
       - https://github.com/AlessandroZ/BeRoot.git
       - https://github.com/mzet-/linux-exploit-suggester.git
+      - https://github.com/jondonas/linux-exploit-suggester-2.git
       - https://github.com/bitsadmin/wesng.git
       - https://github.com/noraj/OSCP-Exam-Report-Template-Markdown.git
       - https://github.com/rapid7/ssh-badkeys.git
