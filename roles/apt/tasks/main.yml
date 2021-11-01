@@ -5,3 +5,13 @@
   shell: "apt-get install -y software-properties-common apt-transport-https"
 - name: "install tools"
   shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y gobuster ripgrep fd-find bat exa unicornscan crowbar parsero filezilla httpie jq"
+- name: "update tools"
+  shell: "DEBIAN_FRONTEND=noninteractive searchsploit -u"
+- name: check code installed
+  shell: "which code"
+  register: check_code
+  failed_when: check_code.rc not in [0,1]
+- block:
+  - name: update code
+    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y code --only-upgrade"
+  when: check_code.rc == 0
