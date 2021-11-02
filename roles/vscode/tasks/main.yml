@@ -65,5 +65,79 @@
       Keywords=vscode;
 
       [Desktop Action New]
-      Name=New Terminal
+      Name=Open code
       Exec=code
+
+- name: edit ~/.config/Code/User/settings.json
+  become: no
+  blockinfile:
+    dest: ~/.config/Code/User/settings.json
+    create: true
+    marker: "// {mark} ANSIBLE MANAGED BLOCK code"
+    content: |
+      {
+        "diffEditor.wordWrap": "on",
+        "editor.bracketPairColorization.enabled": true,
+        "editor.fontFamily": "'Source Han Code JP', monospace",
+        "editor.fontSize": 14,
+        "editor.formatOnSave": false,
+        "editor.minimap.renderCharacters": false,
+        "editor.renderWhitespace": "all",
+        "editor.snippetSuggestions": "top",
+        "editor.suggestSelection": "first",
+        "editor.tabSize": 2,
+        "editor.wordWrap": "on",
+        "explorer.confirmDelete": false,
+        "explorer.confirmDragAndDrop": false,
+        "files.exclude": {
+          "**/._**": true,
+          "**/.cache": true,
+          "**/.classpath": true,
+          "**/.DS_Store": true,
+          "**/.factorypath": true,
+          "**/.git": true,
+          "**/.hg": true,
+          "**/.idea": true,
+          "**/.log": true,
+          "**/.project": true,
+          "**/.settings": true,
+          "**/.sublime-project": true,
+          "**/.sublime-workspace": true,
+          "**/.svn": true,
+          "**/.tmp": true,
+          "**/.vs": true,
+          "**/.vscode": true,
+          "**/node_modules": true,
+          "**/scss-lint-report.xml": true
+        },
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+        "files.watcherExclude": {
+          "**/._**": true,
+          "**/.cache": true,
+          "**/.DS_Store": true,
+          "**/.git": true,
+          "**/.hg": true,
+          "**/.idea": true,
+          "**/.log": true,
+          "**/.project": true,
+          "**/.settings": true,
+          "**/.sublime-project": true,
+          "**/.sublime-workspace": true,
+          "**/.svn": true,
+          "**/.tmp": true,
+          "**/.vs": true,
+          "**/.vscode": true,
+          "**/node_modules": true,
+          "**/scss-lint-report.xml": true
+        },
+        "git.autofetch": true,
+        "git.confirmSync": false,
+        "git.enableSmartCommit": true,
+        "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
+        "terminal.integrated.fontSize": 13,
+        "workbench.colorTheme": "GitHub Dark",
+        "workbench.iconTheme": "material-icon-theme",
+        "workbench.startupEditor": "welcomePage",
+        "terminal.integrated.cursorStyle": "underline",
+      }
