@@ -43,3 +43,27 @@
       - pkief.material-icon-theme
       - github.github-vscode-theme
   when: check_code.rc == 1
+
+- name: edit ~/Desktop/code.desktop
+  become: no
+  blockinfile:
+    dest: ~/Desktop/code.desktop
+    create: true
+    marker: "# {mark} ANSIBLE MANAGED BLOCK code"
+    content: |
+      [Desktop Entry]
+      Type=Application
+      TryExec=code
+      Exec=code
+      Icon=code
+      Terminal=false
+      Categories=Utility;TextEditor;Development;IDE;
+
+      Name=VSCode
+      StartupWMClass=code
+      Actions=new-empty-window;
+      Keywords=vscode;
+
+      [Desktop Action New]
+      Name=New Terminal
+      Exec=code
