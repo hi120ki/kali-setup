@@ -40,4 +40,6 @@
       - ritwickdey.LiveServer
       - usernamehw.errorlens
       - VisualStudioExptTeam.vscodeintellicode
+      - pkief.material-icon-theme
+      - github.github-vscode-theme
   when: check_code.rc == 1
