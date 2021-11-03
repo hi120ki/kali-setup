@@ -1,0 +1,21 @@
+- name: check SauceCodePro
+  stat:
+    path: /usr/share/fonts/SauceCodePro
+  register: SauceCodePro
+  become: no
+- block:
+  - name: SauceCodePro dir
+    file:
+      path: /usr/share/fonts/SauceCodePro
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+  - name: "wget SauceCodePro"
+    shell: "wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip -O SourceCodePro.zip"
+  - name: "7z x SauceCodePro"
+    shell: "7z x SourceCodePro.zip -o/usr/share/fonts/SauceCodePro"
+  - name: "rm SauceCodePro"
+    shell: "rm SourceCodePro.zip"
+  when:
+    - not SauceCodePro.stat.exists
