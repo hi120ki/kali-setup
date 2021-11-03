@@ -67,6 +67,9 @@
       [Desktop Action New]
       Name=Open code
       Exec=code
+- name: chmod desktop
+  shell: "chmod +x ~/Desktop/code.desktop"
+  become: no
 
 - name: edit ~/.config/Code/User/settings.json
   become: no
