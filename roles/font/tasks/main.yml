@@ -20,30 +20,30 @@
   when:
     - not SauceCodePro.stat.exists
 
-- name: check sourcehancodejp
+- name: check SourceHanCodeJP
   stat:
-    path: /usr/share/fonts/sourcehancodejp
-  register: sourcehancodejp
+    path: /usr/share/fonts/SourceHanCodeJP
+  register: SourceHanCodeJP
   become: no
 - block:
-  - name: sourcehancodejp dir
+  - name: SourceHanCodeJP dir
     file:
-      path: /usr/share/fonts/sourcehancodejp
+      path: /usr/share/fonts/SourceHanCodeJP
       state: directory
       owner: root
       group: root
       mode: 0755
-  - name: "wget sourcehancodejp"
-    shell: "wget https://github.com/adobe-fonts/source-han-code-jp/archive/refs/tags/2.012R.zip -O sourcehancodejp.zip"
-  - name: "7z x sourcehancodejp"
-    shell: "7z x sourcehancodejp.zip"
-  - name: "mv sourcehancodejp"
-    shell: "mv source-han-code-jp-2.012R/OTF /usr/share/fonts/sourcehancodejp"
-  - name: "chmod sourcehancodejp"
-    shell: "chmod 0755 /usr/share/fonts/sourcehancodejp/OTF"
-  - name: "rm sourcehancodejp.zip"
-    shell: "rm sourcehancodejp.zip"
-  - name: "rm sourcehancodejp.zip"
+  - name: "wget SourceHanCodeJP"
+    shell: "wget https://github.com/adobe-fonts/source-han-code-jp/archive/refs/tags/2.012R.zip -O SourceHanCodeJP.zip"
+  - name: "7z x SourceHanCodeJP"
+    shell: "7z x SourceHanCodeJP.zip"
+  - name: "mv SourceHanCodeJP"
+    shell: "mv source-han-code-jp-2.012R/OTF /usr/share/fonts/SourceHanCodeJP"
+  - name: "chmod SourceHanCodeJP"
+    shell: "chmod 0755 /usr/share/fonts/SourceHanCodeJP/OTF"
+  - name: "rm SourceHanCodeJP.zip"
+    shell: "rm SourceHanCodeJP.zip"
+  - name: "rm SourceHanCodeJP.zip"
     shell: "rm -rf source-han-code-jp-2.012R"
   when:
-    - not sourcehancodejp.stat.exists
+    - not SourceHanCodeJP.stat.exists
