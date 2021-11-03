@@ -39,6 +39,8 @@
     shell: "7z x sourcehancodejp.zip"
   - name: "mv sourcehancodejp"
     shell: "mv source-han-code-jp-2.012R/OTF /usr/share/fonts/sourcehancodejp"
+  - name: "chmod sourcehancodejp"
+    shell: "chmod 0755 /usr/share/fonts/sourcehancodejp/OTF"
   - name: "rm sourcehancodejp.zip"
     shell: "rm sourcehancodejp.zip"
   - name: "rm sourcehancodejp.zip"
