@@ -13,3 +13,5 @@
   - name: update code
     shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y code --only-upgrade"
   when: check_code.rc == 0
+- name: update tool
+  shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y exploitdb tmux wget nano chromium firefox-esr --only-upgrade"
