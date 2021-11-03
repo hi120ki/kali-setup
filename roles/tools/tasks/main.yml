@@ -21,22 +21,30 @@
       - https://github.com/pentestmonkey/smtp-user-enum.git
       - https://github.com/P0cL4bs/kadimus.git
       - https://github.com/besimorhino/powercat.git
-      - https://github.com/carlospolop/PEASS-ng.git
-      - https://github.com/diego-treitos/linux-smart-enumeration.git
-      - https://github.com/rebootuser/LinEnum.git
-      - https://github.com/DominicBreuker/pspy.git
       - https://github.com/BC-SECURITY/Empire.git
-      - https://github.com/PowerShellMafia/PowerSploit.git
-      - https://github.com/gladiatx0r/Powerless.git
       - https://github.com/411Hall/JAWS.git
-      - https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git
       - https://github.com/rasta-mouse/Sherlock.git
       - https://github.com/AlessandroZ/BeRoot.git
-      - https://github.com/mzet-/linux-exploit-suggester.git
       - https://github.com/jondonas/linux-exploit-suggester-2.git
       - https://github.com/bitsadmin/wesng.git
+      - https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git
       - https://github.com/noraj/OSCP-Exam-Report-Template-Markdown.git
       - https://github.com/rapid7/ssh-badkeys.git
-      - https://github.com/CiscoCXSecurity/creddump7
+      - https://github.com/CiscoCXSecurity/creddump7.git
+      - https://github.com/sqlmapproject/sqlmap.git
+      - https://github.com/codingo/NoSQLMap.git
   when:
     - not tool_dir.stat.exists
+
+- name: check kerbrute
+  stat:
+    path: /usr/bin/kerbrute
+  register: kerbrute
+  become: no
+- block:
+  - name: "wget kerbrute"
+    shell: "wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O /usr/bin/kerbrute"
+  - name: "chmod kerbrute"
+    shell: "chmod +x /usr/bin/kerbrute"
+  when:
+    - not kerbrute.stat.exists
