@@ -1,6 +1,7 @@
 - hosts: localhost
   become: yes
   roles:
+    - etc
     - ssh
     - git
     - apt
@@ -12,4 +13,3 @@
     - anyenv
     - alacritty
     - font
-    - etc

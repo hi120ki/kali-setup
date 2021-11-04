@@ -110,6 +110,7 @@
           "**/.tmp": true,
           "**/.vs": true,
           "**/.vscode": true,
+          "**/.gitkeep": true,
           "**/node_modules": true,
           "**/scss-lint-report.xml": true
         },
@@ -131,6 +132,7 @@
           "**/.tmp": true,
           "**/.vs": true,
           "**/.vscode": true,
+          "**/.gitkeep": true,
           "**/node_modules": true,
           "**/scss-lint-report.xml": true
         },
