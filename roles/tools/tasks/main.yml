@@ -67,7 +67,7 @@
   register: debiandsa
   become: no
 - block:
-  - name: "wget debiandsa"
+  - name: "unzip debiandsa"
     shell: "tar -jxvf ~/tool/debian-ssh/common_keys/debian_ssh_dsa_1024_x86.tar.bz2 -C ~/tool/debian-ssh/common_keys/"
     become: no
   when:
@@ -79,7 +79,7 @@
   register: debianrsa
   become: no
 - block:
-  - name: "wget debianrsa"
+  - name: "unzip debianrsa"
     shell: "tar -jxvf ~/tool/debian-ssh/common_keys/debian_ssh_rsa_2048_x86.tar.bz2 -C ~/tool/debian-ssh/common_keys/"
     become: no
   when:
