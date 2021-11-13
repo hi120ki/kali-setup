@@ -33,6 +33,7 @@
       - https://github.com/CiscoCXSecurity/creddump7.git
       - https://github.com/sqlmapproject/sqlmap.git
       - https://github.com/codingo/NoSQLMap.git
+      - https://github.com/g0tmi1k/debian-ssh.git
   when:
     - not tool_dir.stat.exists
 
@@ -48,3 +49,27 @@
     shell: "chmod +x /usr/bin/kerbrute"
   when:
     - not kerbrute.stat.exists
+
+- name: check debiandsa
+  stat:
+    path: ~/tool/debian-ssh/common_keys/dsa
+  register: debiandsa
+  become: no
+- block:
+  - name: "wget debiandsa"
+    shell: "tar -jxvf ~/tool/debian-ssh/common_keys/debian_ssh_dsa_1024_x86.tar.bz2 -C ~/tool/debian-ssh/common_keys/"
+    become: no
+  when:
+    - not debiandsa.stat.exists
+
+- name: check debianrsa
+  stat:
+    path: ~/tool/debian-ssh/common_keys/rsa
+  register: debianrsa
+  become: no
+- block:
+  - name: "wget debianrsa"
+    shell: "tar -jxvf ~/tool/debian-ssh/common_keys/debian_ssh_rsa_2048_x86.tar.bz2 -C ~/tool/debian-ssh/common_keys/"
+    become: no
+  when:
+    - not debianrsa.stat.exists
