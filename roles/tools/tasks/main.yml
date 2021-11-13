@@ -34,6 +34,17 @@
       - https://github.com/sqlmapproject/sqlmap.git
       - https://github.com/codingo/NoSQLMap.git
       - https://github.com/g0tmi1k/debian-ssh.git
+  - name: mkdir ~/tool/smbver
+    file:
+      path: ~/tool/smbver
+      state: directory
+    become: no
+  - name: download smbver
+    shell: "curl https://raw.githubusercontent.com/rewardone/OSCPRepo/master/scripts/recon_enum/smbver.sh -o ~/tool/smbver/smbver.sh"
+    become: no
+  - name: edit smbver
+    shell: "sed -i -e 's/tap0/tun0/g' ~/tool/smbver/smbver.sh"
+    become: no
   when:
     - not tool_dir.stat.exists
 

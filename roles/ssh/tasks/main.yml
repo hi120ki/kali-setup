@@ -24,3 +24,22 @@
     become: no
   when:
     - not sshkey_file.stat.exists
+- name: edit ~/.ssh/config
+  become: no
+  blockinfile:
+    dest: ~/.ssh/config
+    create: true
+    marker: "# {mark} ANSIBLE MANAGED BLOCK ssh"
+    content: |
+      Host *
+        ServerAliveInterval 60
+        TCPKeepAlive yes
+        IPQoS 0
+        StrictHostKeyChecking no
+        UserKnownHostsFile=/dev/null
+
+      Host github.com
+        AddKeysToAgent yes
+        HostName github.com
+        IdentityFile ~/.ssh/id_ed25519
+        User git
