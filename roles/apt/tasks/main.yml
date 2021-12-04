@@ -12,6 +12,6 @@
   register: check_code
   failed_when: check_code.rc not in [0,1]
 - block:
-  - name: update code  via apt
+  - name: update code via apt
     shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y --only-upgrade code"
   when: check_code.rc == 0
