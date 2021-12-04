@@ -1,8 +1,8 @@
 - name: "apt-get update"
   shell: "apt-get update"
   ignore_errors: yes
-- name: "install software-properties-common"
-  shell: "apt-get install -y software-properties-common apt-transport-https"
+- name: "install apt dep"
+  shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common apt-transport-https"
 - name: "install tools via apt"
   shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y gobuster ripgrep fd-find bat exa unicornscan crowbar parsero filezilla httpie jq htop sshuttle"
 - name: update tools via apt
