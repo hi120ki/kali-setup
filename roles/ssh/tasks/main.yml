@@ -43,3 +43,11 @@
         HostName github.com
         IdentityFile ~/.ssh/id_ed25519
         User git
+- name: edit /etc/ssh/sshd_config
+  blockinfile:
+    dest: /etc/ssh/sshd_config
+    marker: "# {mark} ANSIBLE MANAGED BLOCK ssh"
+    content: |
+      PermitRootLogin yes
+      PubkeyAuthentication yes
+      PasswordAuthentication no
