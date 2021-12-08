@@ -3,8 +3,10 @@
   ignore_errors: yes
 - name: "install apt dep"
   shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common apt-transport-https"
+- name: "add-architecture i386"
+  shell: "dpkg --add-architecture i386"
 - name: "install tools via apt"
-  shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y gcc-multilib gobuster ripgrep fd-find bat exa unicornscan crowbar parsero filezilla httpie jq htop sshuttle"
+  shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y gcc-multilib gobuster ripgrep fd-find bat exa unicornscan crowbar parsero filezilla httpie jq htop sshuttle wine32 shellter"
 - name: update tools via apt
   shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y --only-upgrade exploitdb tmux wget nano chromium firefox-esr"
 - name: check code installed
