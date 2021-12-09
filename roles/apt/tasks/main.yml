@@ -5,10 +5,13 @@
   shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common apt-transport-https"
 - name: "install tools via apt"
   shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y gcc-multilib gobuster ripgrep fd-find bat exa unicornscan crowbar parsero filezilla httpie jq htop sshuttle shellter"
+- name: "add-architecture i386"
+  shell: "dpkg --add-architecture i386"
+- name: "apt-get update"
+  shell: "apt-get update"
+  ignore_errors: yes
 - name: "install wine32 via apt"
   shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y wine32"
-- name: "install shellter via apt"
-  shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y shellter"
 - name: update tools via apt
   shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y --only-upgrade exploitdb tmux wget nano chromium firefox-esr"
 - name: check code installed
