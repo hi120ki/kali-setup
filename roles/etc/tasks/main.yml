@@ -26,10 +26,3 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     content: |
       set-option -g mouse on
-- name: "add-architecture i386"
-  shell: "dpkg --add-architecture i386"
-- name: "apt-get update"
-  shell: "apt-get update"
-  ignore_errors: yes
-- name: "install wine32 via apt"
-  shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y wine32"
