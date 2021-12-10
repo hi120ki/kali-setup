@@ -1,11 +1,11 @@
 - hosts: localhost
   become: yes
   roles:
+    - keyboard
     - etc
     - ssh
     - git
     - apt
-    - keyboard
     - tools
     - pipx
     - vscode
