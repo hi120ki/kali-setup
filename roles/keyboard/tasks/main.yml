@@ -4,14 +4,14 @@
   ignore_errors: yes
 # 2021.4~
 - name: "/Default/XkbDisable"
-  shell: "xfconf-query -c keyboard-layout -p /Default/XkbDisable -s false"
+  shell: "xfconf-query -c keyboard-layout -p /Default/XkbDisable -n -t bool -s false"
   become: no
 - name: "/Default/XkbLayout"
-  shell: "xfconf-query -c keyboard-layout -p /Default/XkbLayout -s jp"
+  shell: "xfconf-query -c keyboard-layout -p /Default/XkbLayout -n -t string -s jp"
   become: no
 - name: "/Default/XkbVariant"
-  shell: "xfconf-query -c keyboard-layout -p /Default/XkbVariant -s OADG109A"
+  shell: "xfconf-query -c keyboard-layout -p /Default/XkbVariant -n -t string -s OADG109A"
   become: no
 - name: "/Default/XkbModel"
-  shell: "xfconf-query -c keyboard-layout -p /Default/XkbModel -s OADG109A"
+  shell: "xfconf-query -c keyboard-layout -p /Default/XkbModel -n -t string -s OADG109A"
   become: no
