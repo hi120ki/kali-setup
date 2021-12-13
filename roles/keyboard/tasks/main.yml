@@ -1,3 +1,17 @@
+# ~2021.3
 - name: "localectl set-keymap jp106"
   shell: "localectl set-keymap jp106"
   ignore_errors: yes
+# 2021.4~
+- name: "/Default/XkbDisable"
+  shell: "xfconf-query -c keyboard-layout -p /Default/XkbDisable -s false"
+  become: no
+- name: "/Default/XkbLayout"
+  shell: "xfconf-query -c keyboard-layout -p /Default/XkbLayout -s jp"
+  become: no
+- name: "/Default/XkbVariant"
+  shell: "xfconf-query -c keyboard-layout -p /Default/XkbVariant -s OADG109A"
+  become: no
+- name: "/Default/XkbModel"
+  shell: "xfconf-query -c keyboard-layout -p /Default/XkbModel -s OADG109A"
+  become: no
