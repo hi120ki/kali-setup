@@ -17,7 +17,7 @@
       nameserver 8.8.8.8
       nameserver 2001:4860:4860::8888
 - name: "xfce workspace count 4"
-  shell: "xfconf-query -c xfwm4 -p /general/workspace_count -s 4"
+  shell: "xfconf-query -c xfwm4 -p /general/workspace_count -n -t int -s 4"
 - name: edit  ~/.tmux.conf
   become: no
   blockinfile:
