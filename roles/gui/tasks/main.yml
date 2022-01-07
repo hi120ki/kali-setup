@@ -1,0 +1,2 @@
+- name: "xfce workspace count 4"
+  shell: "xfconf-query -c xfwm4 -p /general/workspace_count -n -t int -s 4"

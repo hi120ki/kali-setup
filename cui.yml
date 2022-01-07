@@ -1,17 +1,12 @@
 - hosts: localhost
   become: yes
   roles:
-    - keyboard
     - etc
     - ssh
     - git
     - apt
     - tools
     - pipx
-    - vscode
     - zsh
     - anyenv
-    - alacritty
-    - font
     - wine
-    - gui
