@@ -1,6 +1,6 @@
 .PHONY: install
 install:
-	ansible-playbook -i local, local.yml --ask-become-pass
+	ansible-playbook -c=local -i local, local.yml --ask-become-pass
 
 .PHONY: ansible
 ansible:

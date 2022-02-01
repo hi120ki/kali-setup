@@ -3,7 +3,7 @@
 ```
 git clone https://github.com/hi120ki/kali-setup.git
 sudo apt update ; sudo apt install -y ansible
-ansible-playbook -i local, kali-setup/local.yml --ask-become-pass
+ansible-playbook -c=local -i local, kali-setup/local.yml --ask-become-pass
 ```
 
 ```
@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
     sudo sed -i.bk -e 's/http.kali.org/ftp.riken.jp\/Linux/g' /etc/apt/sources.list
     sudo apt update ; sudo apt install -y ansible
     git clone https://github.com/hi120ki/kali-setup.git
-    ansible-playbook -i local, kali-setup/cui.yml
+    ansible-playbook -c=local -i local, kali-setup/cui.yml
   SHELL
 end
 ```
