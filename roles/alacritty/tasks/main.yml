@@ -4,11 +4,11 @@
   become: no
   register: check_rustc
 - block:
-  - name: "install tools"
-    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev"
-  - name: rustup
-    shell: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
-    become: no
+    - name: "install tools"
+      shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev"
+    - name: rustup
+      shell: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+      become: no
   when: check_rustc.stat.exists == false
 
 - name: check bin
@@ -17,18 +17,18 @@
   become: no
   register: check_bin
 - block:
-  - name: git clone
-    shell: "git clone https://github.com/alacritty/alacritty.git ~/alacritty"
-    become: no
-  - name: build
-    shell: "cd ~/alacritty ; ~/.cargo/bin/cargo build --release"
-    become: no
-  - name: mv /usr/bin
-    shell: "sudo cp ~/alacritty/target/release/alacritty /usr/bin"
-    become: no
-  - name: rm ~/alacritty
-    shell: "rm -rf ~/alacritty"
-    become: no
+    - name: git clone
+      shell: "git clone https://github.com/alacritty/alacritty.git ~/alacritty"
+      become: no
+    - name: build
+      shell: "cd ~/alacritty ; ~/.cargo/bin/cargo build --release"
+      become: no
+    - name: mv /usr/bin
+      shell: "sudo cp ~/alacritty/target/release/alacritty /usr/bin"
+      become: no
+    - name: rm ~/alacritty
+      shell: "rm -rf ~/alacritty"
+      become: no
   when: check_bin.stat.exists == false
 
 - name: check desktop
@@ -37,12 +37,12 @@
   become: no
   register: check_desktop
 - block:
-  - name: desktop
-    shell: "cd ~/Desktop ; wget https://raw.githubusercontent.com/alacritty/alacritty/master/extra/linux/Alacritty.desktop"
-    become: no
-  - name: chmod desktop
-    shell: "chmod +x ~/Desktop/Alacritty.desktop"
-    become: no
+    - name: desktop
+      shell: "cd ~/Desktop ; wget https://raw.githubusercontent.com/alacritty/alacritty/master/extra/linux/Alacritty.desktop"
+      become: no
+    - name: chmod desktop
+      shell: "chmod +x ~/Desktop/Alacritty.desktop"
+      become: no
   when: check_desktop.stat.exists == false
 
 - name: edit ~/.alacritty.yml

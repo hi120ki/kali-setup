@@ -4,65 +4,65 @@
   register: check_anyenv
   become: no
 - block:
-  - name: "apt-get update"
-    shell: "apt-get update"
-    ignore_errors: yes
-  - name: "apt-get install pyenv lib"
-    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y libssl-dev libbz2-dev libreadline-dev libsqlite3-dev"
-  - name: "git clone anyenv"
-    shell: "git clone https://github.com/anyenv/anyenv ~/.anyenv"
-    become: no
-  - name: add PATH ~/.zshrc
-    become: no
-    blockinfile:
-      dest: ~/.zshrc
-      marker: "# {mark} ANSIBLE MANAGED BLOCK anyenv"
-      content: |
-        export PATH="$HOME/.anyenv/bin:$PATH"
-        eval "$(anyenv init -)"
-  - name: add PATH ~/.bashrc
-    become: no
-    blockinfile:
-      dest: ~/.bashrc
-      marker: "# {mark} ANSIBLE MANAGED BLOCK anyenv"
-      content: |
-        export PATH="$HOME/.anyenv/bin:$PATH"
-        eval "$(anyenv init -)"
-  - name: "anyenv install --init"
-    shell: "~/.anyenv/bin/anyenv install --force-init"
-    become: no
-  - name: "anyenv install nodenv"
-    shell: "~/.anyenv/bin/anyenv install nodenv"
-    become: no
-  - name: "anyenv install pyenv"
-    shell: "~/.anyenv/bin/anyenv install pyenv"
-    become: no
-  - name: "anyenv install rbenv"
-    shell: "~/.anyenv/bin/anyenv install rbenv"
-    become: no
-  - name: "install node14"
-    shell: "source ~/.zshrc ; nodenv install 16.13.1 ; nodenv global 16.13.1"
-    become: no
-    args:
-      executable: /usr/bin/zsh
-  - name: "install python2"
-    shell: "source ~/.zshrc ; pyenv install 2.7.18"
-    become: no
-    args:
-      executable: /usr/bin/zsh
-  - name: "install python3"
-    shell: "source ~/.zshrc ; pyenv install 3.8.12"
-    become: no
-    args:
-      executable: /usr/bin/zsh
-  - name: "install ruby 2.7"
-    shell: "source ~/.zshrc ; rbenv install 2.7.4"
-    become: no
-    args:
-      executable: /usr/bin/zsh
-  - name: "install poetry"
-    shell: "curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python3 -"
-    become: no
+    - name: "apt-get update"
+      shell: "apt-get update"
+      ignore_errors: yes
+    - name: "apt-get install pyenv lib"
+      shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y libssl-dev libbz2-dev libreadline-dev libsqlite3-dev"
+    - name: "git clone anyenv"
+      shell: "git clone https://github.com/anyenv/anyenv ~/.anyenv"
+      become: no
+    - name: add PATH ~/.zshrc
+      become: no
+      blockinfile:
+        dest: ~/.zshrc
+        marker: "# {mark} ANSIBLE MANAGED BLOCK anyenv"
+        content: |
+          export PATH="$HOME/.anyenv/bin:$PATH"
+          eval "$(anyenv init -)"
+    - name: add PATH ~/.bashrc
+      become: no
+      blockinfile:
+        dest: ~/.bashrc
+        marker: "# {mark} ANSIBLE MANAGED BLOCK anyenv"
+        content: |
+          export PATH="$HOME/.anyenv/bin:$PATH"
+          eval "$(anyenv init -)"
+    - name: "anyenv install --init"
+      shell: "~/.anyenv/bin/anyenv install --force-init"
+      become: no
+    - name: "anyenv install nodenv"
+      shell: "~/.anyenv/bin/anyenv install nodenv"
+      become: no
+    - name: "anyenv install pyenv"
+      shell: "~/.anyenv/bin/anyenv install pyenv"
+      become: no
+    - name: "anyenv install rbenv"
+      shell: "~/.anyenv/bin/anyenv install rbenv"
+      become: no
+    - name: "install node14"
+      shell: "source ~/.zshrc ; nodenv install 16.13.1 ; nodenv global 16.13.1"
+      become: no
+      args:
+        executable: /usr/bin/zsh
+    - name: "install python2"
+      shell: "source ~/.zshrc ; pyenv install 2.7.18"
+      become: no
+      args:
+        executable: /usr/bin/zsh
+    - name: "install python3"
+      shell: "source ~/.zshrc ; pyenv install 3.8.12"
+      become: no
+      args:
+        executable: /usr/bin/zsh
+    - name: "install ruby 2.7"
+      shell: "source ~/.zshrc ; rbenv install 2.7.4"
+      become: no
+      args:
+        executable: /usr/bin/zsh
+    - name: "install poetry"
+      shell: "curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python3 -"
+      become: no
   when:
     - not check_anyenv.stat.exists
 - name: "pip install"

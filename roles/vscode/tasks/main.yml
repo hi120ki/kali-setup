@@ -3,45 +3,45 @@
   register: check_code
   failed_when: check_code.rc not in [0,1]
 - block:
-  - name: microsoft.asc
-    shell: "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg"
-    become: no
-  - name: microsoft.gpg
-    shell: "sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/"
-    become: no
-  - name: vscode.list
-    shell: "sudo sh -c 'echo \"deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main\" > /etc/apt/sources.list.d/vscode.list'"
-    become: no
-  - name: rm -f packages.microsoft.gpg
-    shell: "rm -f packages.microsoft.gpg"
-    become: no
-  - name: "apt-get update"
-    shell: "apt-get update"
-    ignore_errors: yes
-  - name: apt-get install -y code
-    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y code"
-  - name: install extension
-    shell: "code --install-extension {{ item }}"
-    become: no
-    with_items:
-      - christian-kohler.path-intellisense
-      - ms-python.python
-      - mikestead.dotenv
-      - EditorConfig.EditorConfig
-      - eamodio.gitlens
-      - donjayamanne.githistory
-      - esbenp.prettier-vscode
-      - formulahendry.auto-close-tag
-      - formulahendry.auto-rename-tag
-      - HookyQR.beautify
-      - ms-vscode.hexeditor
-      - ms-vscode.powershell
-      - oderwat.indent-rainbow
-      - ritwickdey.LiveServer
-      - usernamehw.errorlens
-      - VisualStudioExptTeam.vscodeintellicode
-      - pkief.material-icon-theme
-      - github.github-vscode-theme
+    - name: microsoft.asc
+      shell: "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg"
+      become: no
+    - name: microsoft.gpg
+      shell: "sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/"
+      become: no
+    - name: vscode.list
+      shell: 'sudo sh -c ''echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'''
+      become: no
+    - name: rm -f packages.microsoft.gpg
+      shell: "rm -f packages.microsoft.gpg"
+      become: no
+    - name: "apt-get update"
+      shell: "apt-get update"
+      ignore_errors: yes
+    - name: apt-get install -y code
+      shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y code"
+    - name: install extension
+      shell: "code --install-extension {{ item }}"
+      become: no
+      with_items:
+        - christian-kohler.path-intellisense
+        - ms-python.python
+        - mikestead.dotenv
+        - EditorConfig.EditorConfig
+        - eamodio.gitlens
+        - donjayamanne.githistory
+        - esbenp.prettier-vscode
+        - formulahendry.auto-close-tag
+        - formulahendry.auto-rename-tag
+        - HookyQR.beautify
+        - ms-vscode.hexeditor
+        - ms-vscode.powershell
+        - oderwat.indent-rainbow
+        - ritwickdey.LiveServer
+        - usernamehw.errorlens
+        - VisualStudioExptTeam.vscodeintellicode
+        - pkief.material-icon-theme
+        - github.github-vscode-theme
   when: check_code.rc == 1
 
 - name: edit ~/Desktop/code.desktop

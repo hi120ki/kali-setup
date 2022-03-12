@@ -4,20 +4,20 @@
   register: check_pipx
   become: no
 - block:
-  - name: "apt-get install -y python3-pip python3-venv"
-    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip python3-venv"
-  - name: python3 -m pip install --user pipx
-    shell: "python3 -m pip install --user pipx"
-    become: no
-  - name: python3 -m pipx ensurepath
-    shell: "python3 -m pipx ensurepath"
-    become: no
-  - name: pipx install
-    shell: "~/.local/bin/pipx install {{ item }}"
-    become: no
-    with_items:
-      - git+https://github.com/Tib3rius/AutoRecon.git
-  - name: install AutoRecon dependency
-    shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y seclists curl enum4linux feroxbuster nbtscan nikto nmap onesixtyone oscanner smbclient smbmap smtp-user-enum snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf redis-tools"
+    - name: "apt-get install -y python3-pip python3-venv"
+      shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip python3-venv"
+    - name: python3 -m pip install --user pipx
+      shell: "python3 -m pip install --user pipx"
+      become: no
+    - name: python3 -m pipx ensurepath
+      shell: "python3 -m pipx ensurepath"
+      become: no
+    - name: pipx install
+      shell: "~/.local/bin/pipx install {{ item }}"
+      become: no
+      with_items:
+        - git+https://github.com/Tib3rius/AutoRecon.git
+    - name: install AutoRecon dependency
+      shell: "DEBIAN_FRONTEND=noninteractive apt-get install -y seclists curl enum4linux feroxbuster nbtscan nikto nmap onesixtyone oscanner smbclient smbmap smtp-user-enum snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf redis-tools"
   when:
     - not check_pipx.stat.exists

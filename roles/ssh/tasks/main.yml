@@ -4,26 +4,31 @@
   register: sshkey_file
   become: no
 - block:
-  - name: ssh-keygen
-    shell: "ssh-keygen -t ed25519 -N '' -f ~/.ssh/id_ed25519 1>/dev/null"
-    become: no
-  - name: read id_ed25519.pub
-    shell: "cat ~/.ssh/id_ed25519.pub"
-    register: id_ed25519_pub
-    become: no
-  - name: show id_ed25519.pub
-    debug:
-      msg: "{{ id_ed25519_pub.stdout }}"
-  - name: Download GitHub public key
-    uri:
-      url: https://github.com/hi120ki.keys
-      return_content: yes
-    register: keys
-  - name: add GitHub public key
-    shell: "echo '{{ keys.content }}' >> ~/.ssh/authorized_keys"
-    become: no
+    - name: ssh-keygen
+      shell: "ssh-keygen -t ed25519 -N '' -f ~/.ssh/id_ed25519 1>/dev/null"
+      become: no
+    - name: read id_ed25519.pub
+      shell: "cat ~/.ssh/id_ed25519.pub"
+      register: id_ed25519_pub
+      become: no
+    - name: show id_ed25519.pub
+      debug:
+        msg: "{{ id_ed25519_pub.stdout }}"
   when:
     - not sshkey_file.stat.exists
+- name: Download GitHub public key
+  uri:
+    url: https://github.com/hi120ki.keys
+    return_content: yes
+  register: keys
+- name: add GitHub public key
+  become: no
+  blockinfile:
+    dest: ~/.ssh/authorized_keys
+    create: true
+    marker: "# {mark} ANSIBLE MANAGED BLOCK ssh"
+    content: |
+      {{ keys.content }}
 - name: edit ~/.ssh/config
   become: no
   blockinfile:

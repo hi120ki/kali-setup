@@ -4,47 +4,47 @@
   register: tool_dir
   become: no
 - block:
-  - name: mkdir ~/tool
-    file:
-      path: ~/tool
-      state: directory
-    become: no
-  - name: clone
-    shell: "git -C ~/tool clone --depth 1 {{ item }}"
-    become: no
-    with_items:
-      - https://github.com/superkojiman/onetwopunch.git
-      - https://github.com/areyou1or0/OSCP.git
-      - https://github.com/SpiderLabs/Responder.git
-      - https://github.com/SecureAuthCorp/impacket.git
-      - https://github.com/erforschr/bruteforce-http-auth.git
-      - https://github.com/pentestmonkey/smtp-user-enum.git
-      - https://github.com/P0cL4bs/kadimus.git
-      - https://github.com/besimorhino/powercat.git
-      - https://github.com/BC-SECURITY/Empire.git
-      - https://github.com/411Hall/JAWS.git
-      - https://github.com/rasta-mouse/Sherlock.git
-      - https://github.com/AlessandroZ/BeRoot.git
-      - https://github.com/jondonas/linux-exploit-suggester-2.git
-      - https://github.com/bitsadmin/wesng.git
-      - https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git
-      - https://github.com/noraj/OSCP-Exam-Report-Template-Markdown.git
-      - https://github.com/rapid7/ssh-badkeys.git
-      - https://github.com/CiscoCXSecurity/creddump7.git
-      - https://github.com/sqlmapproject/sqlmap.git
-      - https://github.com/codingo/NoSQLMap.git
-      - https://github.com/g0tmi1k/debian-ssh.git
-  - name: mkdir ~/tool/smbver
-    file:
-      path: ~/tool/smbver
-      state: directory
-    become: no
-  - name: download smbver
-    shell: "curl https://raw.githubusercontent.com/rewardone/OSCPRepo/master/scripts/recon_enum/smbver.sh -o ~/tool/smbver/smbver.sh"
-    become: no
-  - name: edit smbver
-    shell: "sed -i -e 's/tap0/tun0/g' ~/tool/smbver/smbver.sh"
-    become: no
+    - name: mkdir ~/tool
+      file:
+        path: ~/tool
+        state: directory
+      become: no
+    - name: clone
+      shell: "git -C ~/tool clone --depth 1 {{ item }}"
+      become: no
+      with_items:
+        - https://github.com/superkojiman/onetwopunch.git
+        - https://github.com/areyou1or0/OSCP.git
+        - https://github.com/SpiderLabs/Responder.git
+        - https://github.com/SecureAuthCorp/impacket.git
+        - https://github.com/erforschr/bruteforce-http-auth.git
+        - https://github.com/pentestmonkey/smtp-user-enum.git
+        - https://github.com/P0cL4bs/kadimus.git
+        - https://github.com/besimorhino/powercat.git
+        - https://github.com/BC-SECURITY/Empire.git
+        - https://github.com/411Hall/JAWS.git
+        - https://github.com/rasta-mouse/Sherlock.git
+        - https://github.com/AlessandroZ/BeRoot.git
+        - https://github.com/jondonas/linux-exploit-suggester-2.git
+        - https://github.com/bitsadmin/wesng.git
+        - https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git
+        - https://github.com/noraj/OSCP-Exam-Report-Template-Markdown.git
+        - https://github.com/rapid7/ssh-badkeys.git
+        - https://github.com/CiscoCXSecurity/creddump7.git
+        - https://github.com/sqlmapproject/sqlmap.git
+        - https://github.com/codingo/NoSQLMap.git
+        - https://github.com/g0tmi1k/debian-ssh.git
+    - name: mkdir ~/tool/smbver
+      file:
+        path: ~/tool/smbver
+        state: directory
+      become: no
+    - name: download smbver
+      shell: "curl https://raw.githubusercontent.com/rewardone/OSCPRepo/master/scripts/recon_enum/smbver.sh -o ~/tool/smbver/smbver.sh"
+      become: no
+    - name: edit smbver
+      shell: "sed -i -e 's/tap0/tun0/g' ~/tool/smbver/smbver.sh"
+      become: no
   when:
     - not tool_dir.stat.exists
 
@@ -54,10 +54,10 @@
   register: kerbrute
   become: no
 - block:
-  - name: "wget kerbrute"
-    shell: "wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O /usr/bin/kerbrute"
-  - name: "chmod kerbrute"
-    shell: "chmod +x /usr/bin/kerbrute"
+    - name: "wget kerbrute"
+      shell: "wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O /usr/bin/kerbrute"
+    - name: "chmod kerbrute"
+      shell: "chmod +x /usr/bin/kerbrute"
   when:
     - not kerbrute.stat.exists
 
@@ -67,9 +67,9 @@
   register: debiandsa
   become: no
 - block:
-  - name: "unzip debiandsa"
-    shell: "tar -jxvf ~/tool/debian-ssh/common_keys/debian_ssh_dsa_1024_x86.tar.bz2 -C ~/tool/debian-ssh/common_keys/"
-    become: no
+    - name: "unzip debiandsa"
+      shell: "tar -jxvf ~/tool/debian-ssh/common_keys/debian_ssh_dsa_1024_x86.tar.bz2 -C ~/tool/debian-ssh/common_keys/"
+      become: no
   when:
     - not debiandsa.stat.exists
 
@@ -79,8 +79,8 @@
   register: debianrsa
   become: no
 - block:
-  - name: "unzip debianrsa"
-    shell: "tar -jxvf ~/tool/debian-ssh/common_keys/debian_ssh_rsa_2048_x86.tar.bz2 -C ~/tool/debian-ssh/common_keys/"
-    become: no
+    - name: "unzip debianrsa"
+      shell: "tar -jxvf ~/tool/debian-ssh/common_keys/debian_ssh_rsa_2048_x86.tar.bz2 -C ~/tool/debian-ssh/common_keys/"
+      become: no
   when:
     - not debianrsa.stat.exists
