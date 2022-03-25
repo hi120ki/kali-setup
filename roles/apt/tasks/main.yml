@@ -1,3 +1,5 @@
+- name: change mirror
+  shell: sed -i.bk -e 's/http.kali.org/ftp.riken.jp\/Linux/g' /etc/apt/sources.list
 - name: "apt-get update"
   shell: "apt-get update"
   ignore_errors: yes
