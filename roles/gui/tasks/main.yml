@@ -1,2 +1,28 @@
 - name: "xfce workspace count 4"
   shell: "xfconf-query -c xfwm4 -p /general/workspace_count -n -t int -s 4"
+- name: edit ~/Desktop/ScreenShot.desktop
+  become: no
+  blockinfile:
+    dest: ~/Desktop/ScreenShot.desktop
+    create: true
+    marker: "# {mark} ANSIBLE MANAGED BLOCK ScreenShot"
+    content: |
+      [Desktop Entry]
+      Type=Application
+      TryExec=xfce4-screenshooter
+      Exec=xfce4-screenshooter
+      Icon=xfce4-screenshooter
+      Terminal=false
+      Categories=Utility;s
+
+      Name=ScreenShot
+      StartupWMClass=ScreenShot
+      Actions=new-empty-window;
+      Keywords=ScreenShot;
+
+      [Desktop Action New]
+      Name=Open ScreenShot
+      Exec=xfce4-screenshooter
+- name: chmod desktop
+  shell: "chmod +x ~/Desktop/ScreenShot.desktop"
+  become: no
