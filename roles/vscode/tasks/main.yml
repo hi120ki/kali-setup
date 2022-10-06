@@ -25,7 +25,7 @@
       become: no
       with_items:
         - christian-kohler.path-intellisense
-        - ms-python.python
+        # - ms-python.python
         - mikestead.dotenv
         - EditorConfig.EditorConfig
         - eamodio.gitlens
