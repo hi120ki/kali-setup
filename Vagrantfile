@@ -1,5 +1,6 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "kalilinux/rolling"
+  config.vm.box_version = "2023.2.0"
 
   config.vm.hostname = "kali"
 
