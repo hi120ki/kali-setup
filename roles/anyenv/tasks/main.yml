@@ -41,7 +41,7 @@
       shell: "~/.anyenv/bin/anyenv install rbenv"
       become: no
     - name: "install node14"
-      shell: "source ~/.zshrc ; nodenv install 16.13.1 ; nodenv global 16.13.1"
+      shell: "source ~/.zshrc ; nodenv install 16.20.2 ; nodenv global 16.20.2"
       become: no
       args:
         executable: /usr/bin/zsh
@@ -51,12 +51,12 @@
       args:
         executable: /usr/bin/zsh
     - name: "install python3"
-      shell: "source ~/.zshrc ; pyenv install 3.8.12"
+      shell: "source ~/.zshrc ; pyenv install 3.8.17"
       become: no
       args:
         executable: /usr/bin/zsh
     - name: "install ruby 2.7"
-      shell: "source ~/.zshrc ; rbenv install 2.7.4"
+      shell: "source ~/.zshrc ; rbenv install 2.7.8"
       become: no
       args:
         executable: /usr/bin/zsh
@@ -66,12 +66,12 @@
   when:
     - not check_anyenv.stat.exists
 - name: "pip install"
-  shell: "source ~/.zshrc ; pyenv shell 3.8.12 ; pip install -U pip flask impacket"
+  shell: "source ~/.zshrc ; pyenv shell 3.8.17 ; pip install -U pip flask impacket"
   become: no
   args:
     executable: /usr/bin/zsh
 - name: "npm install"
-  shell: "source ~/.zshrc ; nodenv shell 16.13.1 ; npm i -g npm ; npm i -g prettier"
+  shell: "source ~/.zshrc ; nodenv shell 16.20.2 ; npm i -g npm ; npm i -g prettier"
   become: no
   args:
     executable: /usr/bin/zsh
