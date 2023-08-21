@@ -12,7 +12,7 @@
         group: root
         mode: 0755
     - name: "wget SauceCodePro"
-      shell: "wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip -O SourceCodePro.zip"
+      shell: "wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SourceCodePro.zip -O SourceCodePro.zip"
     - name: "7z x SauceCodePro"
       shell: "7z x SourceCodePro.zip -o/usr/share/fonts/SauceCodePro"
     - name: "rm SauceCodePro"
