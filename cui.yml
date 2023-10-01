@@ -9,4 +9,4 @@
     - pipx
     - zsh
     - anyenv
-    - wine
+    # - wine

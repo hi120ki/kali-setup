@@ -13,5 +13,5 @@
     - anyenv
     - alacritty
     - font
-    - wine
+    # - wine
     - gui
